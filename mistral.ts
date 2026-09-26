@@ -10,7 +10,7 @@ export async function askMistral(prompt: string): Promise<string | null> {
         "Authorization": `Bearer ${Deno.env.get("MISTRAL_API_KEY")}`,
       },
       body: JSON.stringify({
-        model: "mistral-small-latest",
+      model: Deno.env.get("MISTRAL_MODEL") ?? "mistral-small-latest",
         messages: [{ role: "user", content: prompt }],
       }),
     });
